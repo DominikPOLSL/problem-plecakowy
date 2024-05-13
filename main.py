@@ -1,11 +1,7 @@
 import random
 from bag import *
-#from items import *
-import time
 
 if __name__ == '__main__':
-
-    #seed = random.randint(0,3)
 
     lista = [{"Id": 0, "Name": "PC", "Weight": 20, "Value": 100},
              {"Id": 1, "Name": "TV", "Weight": 30, "Value": 140},
@@ -17,6 +13,7 @@ if __name__ == '__main__':
              ]
 
     #random.seed(80)
+
     subjects = []
 
     conditional = True
