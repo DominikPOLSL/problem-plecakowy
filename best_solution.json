@@ -1,0 +1,25 @@
+{
+    "items": [
+        {
+            "name": "A",
+            "selected": 0
+        },
+        {
+            "name": "B",
+            "selected": 1
+        },
+        {
+            "name": "C",
+            "selected": 1
+        },
+        {
+            "name": "D",
+            "selected": 0
+        },
+        {
+            "name": "E",
+            "selected": 0
+        }
+    ],
+    "total_value": 220
+}
