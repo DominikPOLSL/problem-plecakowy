@@ -3,6 +3,7 @@ from bag import *
 
 if __name__ == '__main__':
 
+    #Lista dostepnych przedmiotow do spakowania
     lista = [{"Id": 0, "Name": "PC", "Weight": 20, "Value": 100},
              {"Id": 1, "Name": "TV", "Weight": 30, "Value": 140},
              {"Id": 2, "Name": "Phone", "Weight": 10, "Value": 70},
@@ -33,20 +34,22 @@ if __name__ == '__main__':
 
         print("Obiekt numer ", i + 1)
 
-
+        #Pętla działa do czasu dopóki suma aktualnej wagi plecaka z minimalną dostępną wagą jest nizsza niż maksymalna waga
         while bag.current + min(unused_weights) <= bag.max:
             seed = random.randint(0,len(lista)-1)
             j = 0
+            #Pętla działa tylko jeśli wylosowany przedmiot nie znajduje sie już w plecaku, przedmiot jest dostępny w liscie dostępnych wag,
+            #oraz dodanie przedmiotu nie spowoduje przekroczenie wagi
             while (lista[seed] not in bag.lista) and (bag.current + lista[seed].get("Weight") < bag.max) and unused_weights not in bag.lista:
                 j = lista[seed].get("Weight")
                 bag.dodaj(lista[seed])
                 unused_weights.remove(lista[seed].get("Weight"))
-            if bag.current > bag.max:
-                bag.pop()
 
+            #Jeśli nastąpiło dodanie przedmiotu do plecaka, to wyświetli się informacja
             if j != 0:
                 print("Dodano: ",j,"kg - Aktualna waga: ", bag.current,"kg", " Aktualna wartosc: ", bag.value)
 
+        #Dodanie obsobnika do listy osobników
         subjects.append(bag)
         print("\n")
 
