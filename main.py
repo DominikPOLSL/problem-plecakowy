@@ -1,7 +1,9 @@
 import random
 import json
+import matplotlib.pyplot as plt
 
-random.seed(10)
+#random.seed(10)
+
 
 
 items = [
@@ -126,3 +128,75 @@ with open('best_solution.json', 'w') as f:
 print(f"Fitness: {best_fitness}")
 print(f"Weight: {best_weight}")
 print(f"Items: {best_items}")
+
+
+# Funkcja algorytmu genetycznego z zapisywaniem historii przystosowania
+def genetic_algorithm_with_tracking():
+    population = create_population(population_size)
+    best_solution = None
+    fitness_history = []
+
+    for g in range(generations):
+        new_population = []
+        for i in range(population_size // 2):
+            parent1 = roulette_selection(population)
+            parent2 = roulette_selection(population)
+            child1 = crossover(parent1, parent2)
+            child2 = crossover(parent2, parent1)
+            mutate(child1)
+            mutate(child2)
+            new_population.extend([child1, child2])
+
+        population = new_population
+
+        best_fitness = 0
+
+        for individual in population:
+            current_fitness = fitness(individual)
+            if current_fitness > best_fitness:
+                best_fitness = current_fitness
+                best_solution = individual
+
+        fitness_history.append(best_fitness)
+
+    return best_solution, fitness_history
+
+# Uruchomienie algorytmu genetycznego z zapisywaniem historii przystosowania
+best_solution, fitness_history = genetic_algorithm_with_tracking()
+
+# Zapis najlepszego osobnika do pliku JSON
+best_items = [{"value": items[i]["value"], "weight": items[i]["weight"]} for i in range(len(best_solution)) if best_solution[i] == 1]
+best_fitness = fitness(best_solution)
+best_weight = sum(item["weight"] for item in best_items)
+
+with open('best_solution.json', 'w') as f:
+    json.dump({"fitness": best_fitness, "items": best_items}, f, indent=4)
+
+print(f"Fitness: {best_fitness}")
+print(f"Weight: {best_weight}")
+print(f"Items: {best_items}")
+
+# Wykres ewolucji przystosowania
+plt.figure(figsize=(10, 5))
+plt.plot(fitness_history, label='Fitness')
+plt.xlabel('Pokolenie')
+plt.ylabel('Najlepsza wartość fitness')
+plt.title('Ewolucja wartości fitness w kolejnych pokoleniach')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Wykres rozkładu wag i wartości przedmiotów w najlepszym rozwiązaniu
+values = [item['value'] for item in best_items]
+weights = [item['weight'] for item in best_items]
+
+plt.figure(figsize=(10, 5))
+plt.bar(range(len(values)), values, alpha=0.7, label='Wartość')
+plt.bar(range(len(weights)), weights, alpha=0.7, label='Waga', bottom=values)
+plt.xlabel('Indeks przedmiotu')
+plt.ylabel('Wartość / Waga')
+plt.title('Rozkład wartości i wag przedmiotów w najlepszym rozwiązaniu')
+plt.legend()
+plt.grid(True)
+plt.show()
+

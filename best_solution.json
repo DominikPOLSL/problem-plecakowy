@@ -1,25 +1,38 @@
 {
+    "fitness": 570,
     "items": [
         {
-            "name": "A",
-            "selected": 0
+            "value": 60,
+            "weight": 10
         },
         {
-            "name": "B",
-            "selected": 1
+            "value": 30,
+            "weight": 5
         },
         {
-            "name": "C",
-            "selected": 1
+            "value": 70,
+            "weight": 10
         },
         {
-            "name": "D",
-            "selected": 0
+            "value": 40,
+            "weight": 8
         },
         {
-            "name": "E",
-            "selected": 0
+            "value": 95,
+            "weight": 18
+        },
+        {
+            "value": 85,
+            "weight": 16
+        },
+        {
+            "value": 55,
+            "weight": 9
+        },
+        {
+            "value": 135,
+            "weight": 23
         }
-    ],
-    "total_value": 220
+    ]
+
 }
