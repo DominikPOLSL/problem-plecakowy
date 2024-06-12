@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 #random.seed(10)
 
 
+
 items = [
     {"value": 60, "weight": 10},
     {"value": 100, "weight": 20},
@@ -29,7 +30,7 @@ items = [
 ]
 
 max_weight = 100
-population_size = 400
+population_size = 100
 generations = 50
 mutation_rate = 0.01
 
@@ -128,6 +129,7 @@ print(f"Fitness: {best_fitness}")
 print(f"Weight: {best_weight}")
 print(f"Items: {best_items}")
 
+
 # Funkcja algorytmu genetycznego z zapisywaniem historii przystosowania
 def genetic_algorithm_with_tracking():
     population = create_population(population_size)
@@ -197,3 +199,4 @@ plt.title('Rozkład wartości i wag przedmiotów w najlepszym rozwiązaniu')
 plt.legend()
 plt.grid(True)
 plt.show()
+
