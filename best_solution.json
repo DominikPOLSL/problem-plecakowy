@@ -1,0 +1,37 @@
+{
+    "fitness": 570,
+    "items": [
+        {
+            "value": 60,
+            "weight": 10
+        },
+        {
+            "value": 30,
+            "weight": 5
+        },
+        {
+            "value": 70,
+            "weight": 10
+        },
+        {
+            "value": 40,
+            "weight": 8
+        },
+        {
+            "value": 95,
+            "weight": 18
+        },
+        {
+            "value": 85,
+            "weight": 16
+        },
+        {
+            "value": 55,
+            "weight": 9
+        },
+        {
+            "value": 135,
+            "weight": 23
+        }
+    ]
+}
